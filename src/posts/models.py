@@ -16,3 +16,4 @@ class Post(models.Model):
     # If it was python 2 should be __unicode__
     def __str__(self):
         return self.title
+        
