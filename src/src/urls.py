@@ -19,4 +19,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # custom urls
+    # $ indicates end of regex
+    url(r'^posts/$', "posts.views.post_home"),
+    # generic
+    # url(r'^posts/$', "<appname>.views.<function_name),
 ]
