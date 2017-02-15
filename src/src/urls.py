@@ -14,14 +14,16 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
+# it could be done a different approach
+# Using Function Views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # custom urls
     # $ indicates end of regex
-    url(r'^posts/$', "posts.views.post_home"),
+    url(r'^posts/', include("posts.urls")),
     # generic
-    # url(r'^posts/$', "<appname>.views.<function_name),
+    # url(r'^url_app/$', "<appname>.views.<function_name),
 ]
