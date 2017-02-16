@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     {% block head %} {% endblock %}
 </head>
 
@@ -10,15 +9,15 @@
 <h1>{{ title }} is working</h1>
 
 {% for obj in object_list %}
-
-<a href='/posts/{{ obj.id }}/'>{{ obj.title }}</a><br/>
+/posts/id/
+<!--<a href='/posts/{{ obj.id }}/'>{{ obj.title }}</a><br/> previous version without use name url-->
+{% url "posts:detail" id=obj.id %}
+<a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a><br/>
 {{ obj.content }}<br/>
 {{ obj.timestamp }}<br/>
 {{ obj.updated}}<br/>
 <br/>
-
 {% endfor %}
-
 {% block body %}{% endblock %}
 </body>
 

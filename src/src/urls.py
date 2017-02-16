@@ -23,7 +23,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # custom urls
     # $ indicates end of regex
-    url(r'^posts/', include("posts.urls")),
+    url(r'^posts/', include("posts.urls", namespace='posts')),
+    # namespace should be used when there are a set of urls,
+    # for instance /posts/create/
+    # /posts/delete/
+    # /posts/update/
     # generic
     # url(r'^url_app/$', "<appname>.views.<function_name),
 ]

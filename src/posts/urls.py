@@ -18,10 +18,11 @@ urlpatterns = [
     # $ indicates end of regex
     url(r'^$', post_list),
     url(r'^create/$', post_create),
-    url(r'^(?P<id>\d+)/$', post_detail),
+    # name added to url, then the name added can be used on the templates
+    url(r'^(?P<id>\d+)/$', post_detail, name='detail'),
     url(r'^update/$', post_update),
     url(r'^delete/$', post_delete),
-    url(r'^create/$', post_create),
+    # url(r'^create/$', post_create),
     # generic
     # url(r'^url_app/$', "<appname>.views.<function_name),
 ]
