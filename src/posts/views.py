@@ -9,8 +9,8 @@ def post_create(request):
     return HttpResponse("<h1>Create</h1>")
 
 
-def post_detail(request):  # retrieve
-    instance = get_object_or_404(Post, id=3)
+def post_detail(request, id):  # retrieve
+    instance = get_object_or_404(Post, id=id)
     context = {
         "title": instance.title,
         "instance": instance
@@ -19,7 +19,6 @@ def post_detail(request):  # retrieve
 
 
 def post_list(request):
-
     queryset = Post.objects.all()
     # return HttpResponse("<h1>List</h1>")
     context = {
