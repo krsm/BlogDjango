@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 from .models import Post
 from .forms import PostForm
@@ -8,14 +9,17 @@ from .forms import PostForm
 # Create your views here.
 def post_create(request):
     form = PostForm(request.POST)
-    # forms of django to the validation
+    # forms of django do the validation
     if form.is_valid():
         instance = form.save(commit=False)
         print(form.cleaned_data())
         instance.save()
         # to redirect to another page, after save
         # message success
+        messages.success(request, "Post was created!")
         return HttpResponseRedirect(instance.get_absolute_url())
+    else:  # in case of form is not valid
+        messages.success(request, "Post was not created!")
     # to catch data
     # if request.method == 'POST':
     #     title= request.POST.get("content")
@@ -66,6 +70,7 @@ def post_update(request, id=None):
         instance.save()
         # to redirect to another page, after save
         # message success
+        messages.success(request, "Post was updated!")
         return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {

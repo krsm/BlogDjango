@@ -7,6 +7,20 @@
 </head>
 
 <body>
+
+<!--To display messages - Django snippet-->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<!--End to display messages - Django snippet-->
+
 <h1>{{ title }}</h1>
 
 
