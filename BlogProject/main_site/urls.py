@@ -17,6 +17,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+# Serving static files during development
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 # it could be done a different approach
 # Using Function Views
 urlpatterns = [
@@ -31,3 +36,6 @@ urlpatterns = [
     # generic
     # url(r'^url_app/$', "<appname>.views.<function_name),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
