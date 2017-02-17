@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
-    {% block head %} {% endblock %}
-</head>
-
 <body>
-<h1>{{ title }}</h1>
+<h1>Form</h1>
 
+<!--form.as_p as paragraph-->
+<!--fyi default method of form is GET-->
 
-
-{{ instance.title }}<br/>
-{{ instance.content }}<br/>
-{{ instance.timestamp }}<br/>
-{{ instance.updated }}<br/>
-{{ instance.id }}<br/>
-
-
-
-
-{% block body %}{% endblock %}
+<form method='POST' action=''>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='Create Post'>
+</form>
 </body>
 
-
-<footer>
-
-    {% block footer %}{% endblock %}
-</footer>
 
 </html>
