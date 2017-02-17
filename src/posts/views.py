@@ -12,7 +12,7 @@ def post_create(request):
     # forms of django do the validation
     if form.is_valid():
         instance = form.save(commit=False)
-        print(form.cleaned_data())
+        # print(form.cleaned_data())
         instance.save()
         # to redirect to another page, after save
         # message success

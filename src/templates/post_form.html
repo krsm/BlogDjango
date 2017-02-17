@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
 <h1>Form</h1>
 
 <!--form.as_p as paragraph-->
@@ -11,7 +14,6 @@
     {{ form.as_p }}
     <input type='submit' value='Create Post'>
 </form>
-</body>
 
 
-</html>
+{% endblock content %}
