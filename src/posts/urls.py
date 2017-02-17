@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^create/$', post_create),
     # name added to url, then the name added can be used on the templates
     url(r'^(?P<id>\d+)/$', post_detail, name='detail'),
-    url(r'^update/$', post_update),
+    url(r'^(?P<id>\d+)/edit/$', post_update, name='update'),
     url(r'^delete/$', post_delete),
     # url(r'^create/$', post_create),
     # generic
