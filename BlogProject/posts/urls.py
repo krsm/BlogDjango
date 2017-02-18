@@ -19,9 +19,14 @@ urlpatterns = [
     url(r'^$', post_list, name='list'),
     url(r'^create/$', post_create),
     # name added to url, then the name added can be used on the templates
-    url(r'^(?P<id>\d+)/$', post_detail, name='detail'),
-    url(r'^(?P<id>\d+)/edit/$', post_update, name='update'),
-    url(r'^(?P<id>\d+)/delete/$', post_delete),
+    # url(r'^(?P<id>\d+)/$', post_detail, name='detail'),
+    # url(r'^(?P<id>\d+)/edit/$', post_update, name='update'),
+    # url(r'^(?P<id>\d+)/delete/$', post_delete),
+
+    url(r'^(?P<slug>[\w-]+)/$', post_detail, name='detail'),
+    url(r'^(?P<slug>[\w-]+)/edit/$', post_update, name='update'),
+    url(r'^(?P<slug>[\w-]+)/delete/$', post_delete),
+
     # url(r'^create/$', post_create),
     # generic
     # url(r'^url_app/$', "<appname>.views.<function_name),
