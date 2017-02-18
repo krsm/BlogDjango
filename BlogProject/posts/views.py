@@ -47,7 +47,7 @@ def post_list(request):
     # return HttpResponse("<h1>List</h1>")
     context = {
         "object_list": queryset,
-        "title": "My User List"
+        "title": "List"
     }
     # if request.user.is_authenticated():
     #     context = {
