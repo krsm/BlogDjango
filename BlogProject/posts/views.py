@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Post
 from .forms import PostForm
 
@@ -27,7 +29,6 @@ def post_create(request):
 
     context = {
         "form": form,
-
     }
     # return HttpResponse("<h1>Create</h1>")
     return render(request, "post_form.html", context)
@@ -43,11 +44,27 @@ def post_detail(request, id=None):  # retrieve
 
 
 def post_list(request):
-    queryset = Post.objects.all()
-    # return HttpResponse("<h1>List</h1>")
+    # queryset = Post.objects.all().order_by("-timestamp") class Meta replace this
+    queryset_list = Post.objects.all()
+    # code related to pagination
+    paginator = Paginator(queryset_list, 10)  # Show 25 contacts per page
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        queryset = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        queryset = paginator.page(paginator.num_pages)
+    # end of code related to pagination
+
     context = {
         "object_list": queryset,
-        "title": "List"
+        "title": "List",
+        "page_request_var": page_request_var
     }
     # if request.user.is_authenticated():
     #     context = {
@@ -89,4 +106,3 @@ def post_delete(request, id=None):
     # message success
     messages.success(request, "Post was deleted!")
     return redirect("posts:list")
-
