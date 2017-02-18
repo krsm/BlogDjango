@@ -5,7 +5,7 @@ from posts.models import Post
 
 # create class to customize admin
 class PostModelAdmin(admin.ModelAdmin):
-    list_display = ["title", "updated", "timestamp"]
+    list_display = ["title", "updated", "timestamp", "image"]
     list_display_link = ["updated"]
     list_filter = ["updated", "timestamp"]
     list_editable = ["title"]
