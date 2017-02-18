@@ -15,6 +15,7 @@ class PostModelAdmin(admin.ModelAdmin):
         model = Post
 
 
+
 # Registering the Post Model into admin site
 # and connects Post Model witth PostModelAdmin
 admin.site.register(Post, PostModelAdmin)
